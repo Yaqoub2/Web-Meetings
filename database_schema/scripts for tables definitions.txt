@@ -1,0 +1,31 @@
+//users table definition
+CREATE TABLE `users` (
+  `email_id` varchar(100) NOT NULL,
+  `uname` varchar(50) DEFAULT 'user',
+  PRIMARY KEY (`email_id`)
+)
+//meetings table definition
+CREATE TABLE `meetings` (
+  `title_id` varchar(100) NOT NULL,
+  `datem` date NOT NULL DEFAULT curdate(),
+  `importance` varchar(4) NOT NULL DEFAULT 'high',
+  `place` varchar(7) NOT NULL DEFAULT 'online',
+  `presence` varchar(10) NOT NULL DEFAULT 'mandatory',
+  `catogery` varchar(7) NOT NULL DEFAULT 'study',
+  `describ` varchar(200) NOT NULL DEFAULT 'no describtion',
+  `link` varchar(300) NOT NULL,
+  `f_email_id` varchar(100) NOT NULL,
+  PRIMARY KEY (`title_id`),
+  UNIQUE KEY `secondary` (`datem`),
+  KEY `foreign key` (`f_email_id`),
+  CONSTRAINT `foreign key` FOREIGN KEY (`f_email_id`) REFERENCES `users` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) 
+//announcements table definition
+CREATE TABLE `announcements` (
+  `announce_id` int(11) NOT NULL AUTO_INCREMENT,
+  `describ_a` text NOT NULL DEFAULT 'an announcement',
+  `f_email_id` varchar(100) NOT NULL,
+  PRIMARY KEY (`announce_id`),
+  KEY `announce_foreign` (`f_email_id`),
+  CONSTRAINT `announce_foreign` FOREIGN KEY (`f_email_id`) REFERENCES `users` (`email_id`) ON DELETE CASCADE ON UPDATE CASCADE
+)

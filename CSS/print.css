@@ -1,0 +1,58 @@
+@media print {
+    /* Basic table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        page-break-inside: auto;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* Page break styles */
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    /* Ensure the header row repeats on each page */
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    /* Remove unwanted elements */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+    }
+
+    @page {
+        size: auto;
+        margin: 10mm;
+    }
+
+    /* Optional: Highlight odd rows */
+    tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    /* Hide elements that are not needed for printing */
+    .no-print {
+        display: none;
+    }
+}
